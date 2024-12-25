@@ -59,15 +59,16 @@ resource "aws_subnet" "public_subnets" {
 # Creation of DB Private Subnets
 
 resource "aws_subnet" "db_subnets" {
+  for_each = var.vpc_conf.private_db_subnets
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.vpc_conf.private_db_subnets.private_subnet_cidr_0
-  availability_zone       = data.aws_availability_zones.available.names[0]
+  cidr_block        = each.value.cidr_block
+  availability_zone       = data.aws_availability_zones.available.names[each.key]
   tags = merge(
             {
-              "Name"  = "${var.environment}-private-subnet-0"
+              "Name"  = "${var.environment}-private-subnet-${each.key}"
               "Environment" = var.environment
             },
-            var.vpc_conf.private_db_subnets.additional_tags
+            each.value.additional_tags
         )
 }
 
@@ -128,7 +129,8 @@ resource "aws_route_table_association" "rta_subnet_public" {
 #   route_table_id = aws_route_table.rtb_app.id
 # }
 
-resource "aws_route_table_association" "rta_subnet_app" {
-  subnet_id      = aws_subnet.db_subnets.id
+resource "aws_route_table_association" "rta_subnet_db" {
+  for_each = aws_subnet.db_subnets
+  subnet_id      = each.value.id
   route_table_id = aws_route_table.rtb_db.id
 }

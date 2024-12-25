@@ -14,7 +14,7 @@ variable "vpc_id" {
   description = "vpc id where resources would be deployed"
 }
 
-variable "subnet_id" {
+variable "subnet_ids" {
   description = "subnet ID where resources would be deployed"
 }
 

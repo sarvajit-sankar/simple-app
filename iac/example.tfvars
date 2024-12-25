@@ -20,8 +20,15 @@ vpc_conf = {
   }
 
   private_db_subnets = {
-    private_subnet_cidr_0 = "10.0.16.0/20"
-    additional_tags = {
+    0 = {
+      cidr_block = "10.0.16.0/20"
+      additional_tags = {
+      }
+    }
+    1 = {
+      cidr_block = "10.0.32.0/20"
+      additional_tags = {
+      }
     }
   }
 
