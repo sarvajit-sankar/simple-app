@@ -1,4 +1,4 @@
-variable "region" {
+variable "profile" {
   description = "AWS profile to use for deployment"
 }
 

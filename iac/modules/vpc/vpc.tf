@@ -34,7 +34,7 @@ resource "aws_subnet" "public_subnets" {
   availability_zone       = data.aws_availability_zones.available.names[0]
   tags = merge(
             {
-              "Name" = "${var.environment}-public-subnet-A"
+              "Name" = "${var.environment}-public-subnet-0"
               "Environment" = var.environment
             },
             var.vpc_conf.public_subnets.additional_tags
@@ -49,7 +49,7 @@ resource "aws_subnet" "public_subnets" {
 #   availability_zone       = data.aws_availability_zones.available.names[0]
 #   tags = merge(
 #             {
-#               "Name"        = "${var.environment}-private-subnet-A"
+#               "Name"        = "${var.environment}-private-subnet-0"
 #               "Environment" = var.environment
 #             },
 #             var.vpc_conf.private_app_subnets.additional_tags
@@ -60,11 +60,11 @@ resource "aws_subnet" "public_subnets" {
 
 resource "aws_subnet" "db_subnets" {
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.vpc_conf.private_db_subnets.private_subnet_cidr_3
+  cidr_block        = var.vpc_conf.private_db_subnets.private_subnet_cidr_0
   availability_zone       = data.aws_availability_zones.available.names[0]
   tags = merge(
             {
-              "Name"  = "${var.environment}-private-subnet-D"
+              "Name"  = "${var.environment}-private-subnet-0"
               "Environment" = var.environment
             },
             var.vpc_conf.private_db_subnets.additional_tags

@@ -44,7 +44,7 @@ module "rds" {
   environment = var.environment
   rds_conf    = var.rds_conf
   vpc_id      = module.vpc.vpc_id
-  subnet_id   = module.vpc.public_subnet_id
+  subnet_id   = module.vpc.db_subnet_id
   whitelist_sg_id = module.ec2.backend_security_group_id
 }
 

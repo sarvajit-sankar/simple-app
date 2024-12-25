@@ -12,14 +12,17 @@ vpc_conf = {
   public_subnets = {
     public_subnet_cidr_0 = "10.0.0.0/20"
     additional_tags = {
-      
     }
   }
   private_app_subnets = {
+    additional_tags = {
+    }
   }
 
   private_db_subnets = {
     private_subnet_cidr_0 = "10.0.16.0/20"
+    additional_tags = {
+    }
   }
 
   # nat_gateway={
