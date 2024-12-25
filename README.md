@@ -8,6 +8,10 @@ The application consists of three main components:
 2. Backend: FastAPI application running on EC2 (t3.micro)
 3. Database: MySQL database on RDS (free tier)
 
+## Architecture Diagram
+
+![Architecture Diagram](docs/architecture.png)
+
 ## Local Development Setup
 
 ### Prerequisites
